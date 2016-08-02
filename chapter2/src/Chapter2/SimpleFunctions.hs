@@ -28,3 +28,12 @@ data Person = Person String String Gender
 
 data Gender = Male | Female | Unknown
             deriving Show
+
+data TemporalDirection = Past | Future | Both
+                       deriving Show
+
+data Manufacturer = Manufacturer String
+                  deriving Show
+
+data TimeMachine = TimeMachine Manufacturer Int String TemporalDirection Float
+                 deriving Show
