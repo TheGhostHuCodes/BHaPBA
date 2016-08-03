@@ -44,14 +44,11 @@ data TimeMachine = TimeMachine Manufacturer Int String TemporalDirection Float
                  deriving Show
 
 clientName :: Client -> String
-clientName client = case client of
-                  GovOrg name         -> name
-                  Company name _ _ _  -> name
-                  Individual person _ ->
-                     case person of Person fName lName _ -> fName ++ " " ++ lName
+clientName (GovOrg name)                         = name
+clientName (Company name _ _ _)                  = name
+clientName (Individual (Person fName lName _) _) = fName ++ " " ++ lName
 
 fibonacci :: Integer -> Integer
-fibonacci n = case n of
-            0 -> 0
-            1 -> 1
-            _ -> fibonacci(n-1) + fibonacci(n-2)
+fibonacci 0 = 0
+fibonacci 1 = 1
+fibonacci n = fibonacci(n-1) + fibonacci(n-2)
