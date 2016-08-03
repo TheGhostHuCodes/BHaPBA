@@ -52,3 +52,14 @@ fibonacci :: Integer -> Integer
 fibonacci 0 = 0
 fibonacci 1 = 1
 fibonacci n = fibonacci(n-1) + fibonacci(n-2)
+
+genderTuple :: Client -> (Int, Int)
+genderTuple (Individual (Person _ _ Male) _) = (1, 0)
+genderTuple (Individual (Person _ _ Female) _) = (0, 1)
+genderTuple _ = (0, 0)
+
+genderCount :: [Client] -> (Int, Int)
+genderCount []     = (0, 0)
+genderCount (x:xs) = let i = genderTuple x
+                   in (fst i + xs_men, snd i + xs_women)
+                      where (xs_men, xs_women) = genderCount xs
