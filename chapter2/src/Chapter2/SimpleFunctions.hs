@@ -42,3 +42,10 @@ data Manufacturer = Manufacturer String
 
 data TimeMachine = TimeMachine Manufacturer Int String TemporalDirection Float
                  deriving Show
+
+clientName :: Client -> String
+clientName client = case client of
+                  GovOrg name         -> name
+                  Company name _ _ _  -> name
+                  Individual person _ ->
+                     case person of Person fName lName _ -> fName ++ " " ++ lName
