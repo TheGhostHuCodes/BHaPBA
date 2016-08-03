@@ -63,3 +63,10 @@ genderCount []     = (0, 0)
 genderCount (x:xs) = let i = genderTuple x
                    in (fst i + xs_men, snd i + xs_women)
                       where (xs_men, xs_women) = genderCount xs
+
+discount :: TimeMachine -> Float -> TimeMachine
+discount (TimeMachine manufacturer model name direction cost) sale = TimeMachine manufacturer model name direction (cost*sale)
+
+fireSale :: [TimeMachine] -> Float -> [TimeMachine]
+fireSale [] _        = []
+fireSale (x:xs) sale = discount x sale : (fireSale xs sale)
