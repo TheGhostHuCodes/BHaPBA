@@ -49,3 +49,9 @@ clientName client = case client of
                   Company name _ _ _  -> name
                   Individual person _ ->
                      case person of Person fName lName _ -> fName ++ " " ++ lName
+
+fibonacci :: Integer -> Integer
+fibonacci n = case n of
+            0 -> 0
+            1 -> 1
+            _ -> fibonacci(n-1) + fibonacci(n-2)
