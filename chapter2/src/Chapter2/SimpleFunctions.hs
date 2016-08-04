@@ -1,3 +1,4 @@
+{-# LANGUAGE ViewPatterns #-}
 module Chapter2.SimpleFunctions where
 
 firstOrEmpty :: [[Char]] -> [Char]
@@ -105,3 +106,12 @@ unzipper []     = ([], [])
 unzipper (x:xs) = let (f, s) = x
                 in (f:fs, s:ss)
                     where (fs, ss) = unzipper xs
+
+responsibility :: Client -> String
+responsibility (Company _ _ _ r) = r
+responsibility _                 = "Unknown"
+
+specialClient :: Client -> Bool
+specialClient (clientName -> "Mr. Alejandro") = True
+specialClient (responsibility -> "Director")  = True
+specialClient _                               = False
