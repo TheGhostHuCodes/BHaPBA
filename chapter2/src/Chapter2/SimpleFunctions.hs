@@ -93,3 +93,9 @@ specialMultiples n
     | multipleOf n 3 = show n ++ " is a multiple of 3"
     | multipleOf n 5 = show n ++ " is a multiple of 5"
     | otherwise      = show n ++ " is a beautiful number"
+
+ackermann :: Integer -> Integer -> Integer
+ackermann m n
+    | m == 0          = n + 1
+    | m > 0 && n == 0 = ackermann (m-1) 1
+    | m > 0 && n > 0  = ackermann (m-1) (ackermann m (n-1))
