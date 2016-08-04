@@ -77,3 +77,9 @@ sorted :: [Integer] -> Bool
 sorted []             = True
 sorted [_]            = True
 sorted (x1:xs@(x2:_)) = x1 <= x2 && sorted (xs)
+
+binom :: Int -> Int -> Int
+binom 0 _ = 0
+binom _ 0 = 1
+binom x y | x == y = 1
+binom n k = (binom (n-1) (k-1)) + (binom (n-1) k)
