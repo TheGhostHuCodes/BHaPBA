@@ -99,3 +99,9 @@ ackermann m n
     | m == 0          = n + 1
     | m > 0 && n == 0 = ackermann (m-1) 1
     | m > 0 && n > 0  = ackermann (m-1) (ackermann m (n-1))
+
+unzipper :: [(a, a)] -> ([a], [a])
+unzipper []     = ([], [])
+unzipper (x:xs) = let (f, s) = x
+                in (f:fs, s:ss)
+                    where (fs, ss) = unzipper xs
