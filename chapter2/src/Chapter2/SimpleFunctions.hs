@@ -70,3 +70,8 @@ discount (TimeMachine manufacturer model name direction cost) sale = TimeMachine
 fireSale :: [TimeMachine] -> Float -> [TimeMachine]
 fireSale [] _        = []
 fireSale (x:xs) sale = discount x sale : (fireSale xs sale)
+
+sorted :: [Integer] -> Bool
+sorted []             = True
+sorted [_]            = True
+sorted (x1:xs@(x2:_)) = x1 <= x2 && sorted (xs)
