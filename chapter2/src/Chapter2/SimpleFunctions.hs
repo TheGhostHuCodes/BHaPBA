@@ -48,6 +48,13 @@ fibonacci 0 = 0
 fibonacci 1 = 1
 fibonacci n = fibonacci(n-1) + fibonacci(n-2)
 
+ifibonacci :: Integer -> Maybe Integer
+ifibonacci n | n < 0     = Nothing
+ifibonacci 0             = Just 0
+ifibonacci 1             = Just 1
+ifibonacci n | otherwise = let (Just f1, Just f2) = (ifibonacci (n-1), ifibonacci (n-2))
+                         in Just (f1 + f2)
+
 genderTuple :: Client -> (Int, Int)
 genderTuple (Individual (Person _ _ Male) _) = (1, 0)
 genderTuple (Individual (Person _ _ Female) _) = (0, 1)
