@@ -1,6 +1,8 @@
 {-# LANGUAGE ViewPatterns #-}
 module Chapter2.SimpleFunctions where
 
+import Data.Char (toUpper)
+
 firstOrEmpty :: [[Char]] -> [Char]
 firstOrEmpty lst = if not (null lst) then head lst else "empty"
 
@@ -132,3 +134,9 @@ greet :: ClientR -> String
 greet IndividualR { person = PersonR { firstName = fn} } = "Hi, " ++ fn
 greet CompanyR    { clientRName = c }                    = "Hello, " ++ c
 greet GovOrgR     { }                                    = "Welcome"
+
+nameInCapitals :: PersonR -> PersonR
+nameInCapitals p@(PersonR { firstName = initial:rest }) =
+    let newName = (toUpper initial):rest
+    in  p { firstName = newName }
+nameInCapitals p@(PersonR { firstName = ""}) = p
