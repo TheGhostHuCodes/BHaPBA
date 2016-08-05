@@ -40,7 +40,7 @@ data Manufacturer = Manufacturer String
 
 data TimeMachine = TimeMachine { manufacturer :: Manufacturer
                                 , model :: Int
-                                , name :: String
+                                , modelName :: String
                                 , direction :: TemporalDirection
                                 , cost ::Float }
                    deriving Show
