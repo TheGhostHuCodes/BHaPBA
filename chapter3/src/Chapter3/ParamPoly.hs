@@ -16,3 +16,5 @@ data Person = Person { firstName :: String, lastName :: String }
             deriving Show
 
 data Triple a b c = Triple a b c
+
+data SamePair a = SamePair a a
