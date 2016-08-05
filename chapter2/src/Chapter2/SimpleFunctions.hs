@@ -38,8 +38,12 @@ data TemporalDirection = Past | Future | Both
 data Manufacturer = Manufacturer String
                   deriving Show
 
-data TimeMachine = TimeMachine Manufacturer Int String TemporalDirection Float
-                 deriving Show
+data TimeMachine = TimeMachine { manufacturer :: Manufacturer
+                                , model :: Int
+                                , name :: String
+                                , direction :: TemporalDirection
+                                , cost ::Float }
+                   deriving Show
 
 clientName :: Client -> String
 clientName (GovOrg name)                         = name
@@ -70,7 +74,9 @@ genderCount (x:xs) = let i = genderTuple x
                       where (xs_men, xs_women) = genderCount xs
 
 discount :: TimeMachine -> Float -> TimeMachine
-discount (TimeMachine manufacturer model name direction cost) sale = TimeMachine manufacturer model name direction (cost*sale)
+discount tm@(TimeMachine { cost = price }) sale =
+    let newPrice = price*sale
+    in tm { cost = newPrice }
 
 fireSale :: [TimeMachine] -> Float -> [TimeMachine]
 fireSale [] _        = []
