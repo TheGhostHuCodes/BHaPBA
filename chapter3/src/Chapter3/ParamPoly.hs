@@ -14,3 +14,5 @@ data Client i = GovOrg      { clientId :: i, clientName :: String }
 
 data Person = Person { firstName :: String, lastName :: String }
             deriving Show
+
+data Triple a b c = Triple a b c
