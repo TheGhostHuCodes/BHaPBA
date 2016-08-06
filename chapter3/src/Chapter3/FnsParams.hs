@@ -11,3 +11,6 @@ sayHello names = map (\name -> case name of
                                "Alejandro" -> "Hello, writer"
                                _           -> "Welcome, " ++ name
                      ) names
+
+multiplyByN :: Integer -> (Integer -> Integer)
+multiplyByN n = \x -> n*x
