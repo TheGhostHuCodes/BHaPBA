@@ -1,5 +1,7 @@
 module Chapter3.FnsParams where
 
+import Chapter3.ParamPoly
+
 apply3f2 :: (Integer -> Integer) -> Integer -> Integer
 apply3f2 f x = 3 * f(x + 2)
 
@@ -14,3 +16,19 @@ sayHello names = map (\name -> case name of
 
 multiplyByN :: Integer -> (Integer -> Integer)
 multiplyByN n = \x -> n*x
+
+filterOnes :: [Integer] -> [Integer]
+filterOnes l = filter (\i -> i == 1) l
+
+filterANumber :: Integer -> [Integer] -> [Integer]
+filterANumber num l = filter (\i -> i == num) l
+
+filterNot :: (a -> Bool) -> [a] -> [a]
+filterNot f l = filter (not . f) l
+
+isGovOrg :: Client a -> Bool
+isGovOrg (GovOrg _ _) = True
+isGovOrg _ = False
+
+filterGovOrgs :: [Client a] -> [Client a]
+filterGovOrgs l = filter isGovOrg l
