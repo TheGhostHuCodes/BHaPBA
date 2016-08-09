@@ -44,3 +44,6 @@ f *** g = \(x, y) -> (f x, g y)
 
 myDuplicate :: a -> (a, a)
 myDuplicate x = (x, x)
+
+formula1 :: Integer -> Integer
+formula1 = myUncurry (+) . (((*7) . (+2)) *** (*3)) . myDuplicate
